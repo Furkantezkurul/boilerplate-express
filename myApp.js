@@ -1,5 +1,6 @@
 let express = require('express');
 let app = express();
+require('dotenv').config();
 
 console.log("Hello World");
 
@@ -13,8 +14,12 @@ let assetPath = __dirname + "/public";
 app.use("/public", express.static(assetPath));
 
 app.get("/json", function (req, res) {
-    res.json({"message": "Hello json"});
-
+    let response = res.json({"message": "Hello json"});
+    let envVariable = process.env.MESSAGE_STYLE;
+    let result = response;
+    if(envVariable === "uppercase"){
+        result = result.toUpperCase();
+    }
 });
 
 
