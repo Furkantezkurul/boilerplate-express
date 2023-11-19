@@ -3,13 +3,14 @@ let app = express();
 
 console.log("Hello World");
 
-app.get("/", function(req, res) {
+app.get("/", function (req, res) {
     //res.send("Hello Express");
     let path = __dirname + '/views/index.html';
     res.sendFile(path);
-    let assetPath = __dirname + "/public";
-    app.use(assetPath, express.static());
-  });
+});
+
+let assetPath = __dirname + "/public";
+app.use("/", express.static(assetPath));
 
 
 
@@ -43,5 +44,4 @@ app.get("/", function(req, res) {
 
 
 
-
- module.exports = app;
+module.exports = app;
