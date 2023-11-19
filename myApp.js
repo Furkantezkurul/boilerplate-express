@@ -10,7 +10,7 @@ app.get("/", function (req, res) {
 });
 
 let assetPath = __dirname + "/public";
-app.use("/", express.static(assetPath));
+app.use("/public", express.static(assetPath));
 
 
 
