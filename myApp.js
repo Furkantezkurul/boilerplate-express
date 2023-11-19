@@ -12,6 +12,10 @@ app.get("/", function (req, res) {
 let assetPath = __dirname + "/public";
 app.use("/public", express.static(assetPath));
 
+app.get("/json", function (req, res) {
+    res.json({"message": "Hello json"});
+
+});
 
 
 
