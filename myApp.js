@@ -4,6 +4,15 @@ let app = express();
 
 console.log("Hello World");
 
+app.use(function(req, res, next) {
+    let methodName = req.method;
+    let ipadress = req.ip;
+    let path = req.path;
+    console.log(methodName + " " + path + " - " + ipadress);
+    next();
+  });
+
+
 app.get("/", function (req, res) {
     //res.send("Hello Express");
     let path = __dirname + '/views/index.html';
@@ -22,6 +31,7 @@ app.get("/json", function (req, res) {
 
 let assetPath = __dirname + "/public";
 app.use("/public", express.static(assetPath));
+
 
 
 
